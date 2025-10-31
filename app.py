@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 
 # import the model
-pipe = pickle.load(open('/pipe.pkl','rb'))
-df = pickle.load(open('/df.pkl','rb'))
+pipe = pickle.load(open('pipe.pkl','rb'))
+df = pickle.load(open('df.pkl','rb'))
 
 st.title("Laptop Predictor")
 
@@ -55,5 +55,6 @@ if st.button('Predict Price'):
     query = np.array([company, type, Ram, weight, ips, ppi, cpu, hdd, ssd, gpu, os])
     query = query.reshape(1, 11)
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
